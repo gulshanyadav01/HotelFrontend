@@ -1,12 +1,40 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import {useFormik} from 'formik'
 import * as Yup from 'yup';
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {registerUser} from '../store/actions/User'
+import  {toast} from 'react-toastify'
+// import {useHistory , Redirect} from 'react-router-dom'
+// import Login from './Login'
 
-const Register = () => {
+import {useHistory} from 'react-router-dom'
+
+// const sendMessage = () => {
+//   toast.success('successFully registerd');
+
+// }
+
+const Register = ({user , registerUser}) => {
+    
+    let history = useHistory();
+    
+    useEffect(() => {
+       if(user.token) {
+         toast.success('SuccessFully Regsitered');
+         history.push('/login')
+       }
+       //eslint-disable-next-line
+    })
+
+    
+    
+
+
     const formik = useFormik({
             initialValues: {
               email: "",
-              name: "",
+              name: "", 
               password: ""
             },
         
@@ -19,15 +47,23 @@ const Register = () => {
                 .required("password is required")
             }),
             onSubmit: (values) => {
-              console.log(JSON.stringify(values, null, 2));
+              //console.log(JSON.stringify(values, null, 2));
+              registerUser(values)
             }
           });
         
-          console.log(formik);
+          // console.log(formik);
+
+          // if(user.token) {
+          //   history.push('/login')
+          // }
         
           return (
             <div className="w-full shadow-lg max-w-xs mx-auto my-16" >
-              <h1 className="text-white text-4xl">Formik Forms</h1>
+              <div className="flex justify-around">
+             <Link to="/login" className="text-white text-2xl rounded">SignIn</Link>
+             <Link to="/register" className="text-white text-2xl rounded">SignUp</Link>
+          </div>
               <form
                 onSubmit={formik.handleSubmit}
                 className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -100,11 +136,17 @@ const Register = () => {
               </form>
             </div>
           );
+
         
+         
 
 }
 
-export default Register;
+const mapStateToProps = state => ({
+  user : state.user
+})
+
+export default connect(mapStateToProps , {registerUser})(Register);
 
 // npm install tailwindcss postcss-cli autoprefixer@9.8.6 -D
 
