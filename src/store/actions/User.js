@@ -8,14 +8,20 @@ import {
   } from '../types'
 
   import axios from 'axios'
+  import setAuthToken from '../utils'
 
-  export const userProfile = () => async dispatch => {
+
+  export const userProfile = () =>  async dispatch => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token)
+    }
+
     try {
-        const res = await axios.get('https://hotelbackendapp.herokuapp.com/auth/userDetails');
-        dispatch({
-            type : USER_PROFILE,
-            payload: res.data
-        })
+      const res = await axios.get('https://hotelbackendapp.herokuapp.com/auth/userDetails');
+      dispatch({
+        type: USER_PROFILE,
+        payload: res.data
+      })
     } catch (err) {
         console.log(err.response)
         dispatch({
@@ -23,7 +29,8 @@ import {
             payload: err.response
         })
     }
-}
+  }
+
 
   export const registerUser = (data) => async dispatch => {
      
@@ -39,6 +46,8 @@ import {
              type : REGISTER_USER,
              payload: res.data
          })
+         
+         userProfile()
       
        } catch (err) {
            console.log(err.response.data.msg)

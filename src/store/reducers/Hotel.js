@@ -4,7 +4,9 @@ import {
    ADD_HOTEL,
    ADD_HOTEL_FAIL,
    GET_HOTEL_BY_ID,
-   GET_HOTEL_BY_ID_FAIL
+   GET_HOTEL_BY_ID_FAIL,
+   ALL_HOTELS,
+   ALL_HOTELS_FAIL
 } from '../types'
 
 const initialState = {
@@ -24,6 +26,7 @@ const Hotel =  (state = initialState , action) => {
             }
         case ADD_HOTEL_FAIL:
             case GET_HOTEL_BY_ID_FAIL:
+                case ALL_HOTELS_FAIL:
             return {
                 ...state,
                 hotels: null,
@@ -36,6 +39,13 @@ const Hotel =  (state = initialState , action) => {
                 hotels: action.payload,
                 error: null,
                 loading: true
+            }
+        case ALL_HOTELS:
+            return {
+                ...state,
+                hotels: action.payload,
+                loading: true,
+                error: false
             }
         default :
            return state

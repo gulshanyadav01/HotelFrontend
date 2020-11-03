@@ -21,12 +21,13 @@ const initialState = {
 const User =  (state = initialState , action) => {
      switch(action.type) {
         case REGISTER_USER:{
+            localStorage.setItem('token' , action.payload.token)
             return {
                 ...state,
                 user : action.payload,
                 loading:true,
                 error: null,
-                token: action.payload.token,
+                token: localStorage.getItem('token'),
                 isLogged: false
             }
         }
@@ -41,14 +42,14 @@ const User =  (state = initialState , action) => {
                 isLogged: false
             }
         case LOGIN_USER:
-            localStorage.setItem('Token' , action.payload.token)
+            localStorage.setItem('token' , action.payload.token)
             console.log('in reducer' , action.payload)
             return {
                 ...state,
                 user : action.payload,
                 loading:true,
                 error: null,
-                token: action.payload.token,
+                token: localStorage.getItem('token'),
                 isLogged: true
             }
         case USER_PROFILE:

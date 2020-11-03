@@ -14,6 +14,13 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import StartPage from './components/StartPage'
 import HotelForm from './components/HotelForm'
+import Hotels from './components/Hotels'
+
+import setAuthToken from './store/utils'
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token)
+}
 
 function App() {
   return (
@@ -27,6 +34,7 @@ function App() {
           <Route  path= "/register" component = {Register} />
           <PrivateRoute  path= "/main" component = {Main} />
           <PrivateRoute  path= "/addHotel" component = {HotelForm} />
+          <PrivateRoute  path= "/hotels" component = {Hotels} />
           </Switch>
         </Router>
           <ToastContainer />
