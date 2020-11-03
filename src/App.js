@@ -13,6 +13,7 @@ import PrivateRoute from './components/Private'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import StartPage from './components/StartPage'
+import HotelForm from './components/HotelForm'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/login" component={Login}/>
           <Route  path= "/register" component = {Register} />
           <PrivateRoute  path= "/main" component = {Main} />
+          <PrivateRoute  path= "/addHotel" component = {HotelForm} />
           </Switch>
         </Router>
           <ToastContainer />

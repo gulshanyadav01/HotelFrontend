@@ -11,26 +11,29 @@ import {useHistory} from 'react-router-dom'
 
 const Register = ({user , hotel}) => {
     
-    let history = useHistory();
+    // let history = useHistory();
     
 
     
     
-
+   
 
     const formik = useFormik({
             initialValues: {
-              email: "",
-              
+            hotelName: "",
+            location:"",
+            imageUrl:"",
+            utilities: "",
+            description:""
             },
         
             // validate,
             validationSchema: Yup.object({
-              name: Yup.string().required("Name is Required"),
-              email: Yup.string().email().required("Email is required"),
-              password: Yup.string()
-                .min(6, "Password should atleat 6 char long")
-                .required("password is required")
+              location: Yup.string().required("Location is Required"),
+              hotelName: Yup.string().required("Name is Required"),
+              imageUrl : Yup.string().required("Image is Required"),
+              utilities: Yup.string().required("Utilities is Required"),
+              description: Yup.string().required("Description is Required"),
             }),
             onSubmit: (values) => {
               //console.log(JSON.stringify(values, null, 2));
@@ -42,8 +45,7 @@ const Register = ({user , hotel}) => {
           return (
             <div className="w-full shadow-lg max-w-xs mx-auto my-16" >
               <div className="flex justify-around">
-             <Link to="/login" className="text-white text-2xl rounded">SignIn</Link>
-             <Link to="/register" className="text-white text-2xl rounded">SignUp</Link>
+             <h1 className="text-white">Add Hotel</h1>
           </div>
               <form
                 onSubmit={formik.handleSubmit}
@@ -51,39 +53,19 @@ const Register = ({user , hotel}) => {
               >
                 <div className="mb-4">
                   <label
-                    htmlFor="email"
+                    htmlFor="hotelName"
                     className="block text-gray-700 text-sm font-bold mb-2"
                   >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    {...formik.getFieldProps("email")}
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  />
-                  {formik.touched.email && formik.errors.email ? (
-                    <p className="text-red-400">{formik.errors.email}</p>
-                  ) : (
-                    ""
-                  )}
-                </div>
-        
-                <div className="mb-4">
-                  <label
-                    htmlFor="name"
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                  >
-                    Name
+                    Hotel Name
                   </label>
                   <input
                     type="text"
-                    name="name"
-                    {...formik.getFieldProps("name")}
+                    name="hotelName"
+                    {...formik.getFieldProps("hotelName")}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
-                  {formik.touched.name && formik.errors.name ? (
-                    <p className="text-red-400">{formik.errors.name}</p>
+                  {formik.touched.hotelName && formik.errors.hotelName ? (
+                    <p className="text-red-400">{formik.errors.hotelName}</p>
                   ) : (
                     ""
                   )}
@@ -91,23 +73,84 @@ const Register = ({user , hotel}) => {
         
                 <div className="mb-4">
                   <label
-                    htmlFor="password"
+                    htmlFor="location"
                     className="block text-gray-700 text-sm font-bold mb-2"
                   >
-                    Password
+                   Location
                   </label>
                   <input
-                    type="password"
-                    name="password"
+                    type="text"
+                    name="location"
+                    {...formik.getFieldProps("location")}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    {...formik.getFieldProps("password")}
                   />
-                  {formik.touched.password && formik.errors.password ? (
-                    <p className="text-red-400">{formik.errors.password}</p>
+                  {formik.touched.location && formik.errors.location ? (
+                    <p className="text-red-400">{formik.errors.location}</p>
                   ) : (
                     ""
                   )}
                 </div>
+        
+                <div className="mb-4">
+                  <label
+                    htmlFor="imageUrl"
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                  >
+                   Image Url
+                  </label>
+                  <input
+                    type="text"
+                    name="imageUrl"
+                    {...formik.getFieldProps("imageUrl")}
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  />
+                  {formik.touched.Name && formik.errors.Name ? (
+                    <p className="text-red-400">{formik.errors.Name}</p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="utilities"
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                  >
+                   Utilities
+                  </label>
+                  <input
+                    type="text"
+                    name="utilities"
+                    {...formik.getFieldProps("utilities")}
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  />
+                  {formik.touched.utilities && formik.errors.utilities ? (
+                    <p className="text-red-400">{formik.errors.utilities}</p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="description"
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                  >
+                   description
+                  </label>
+                  <input
+                    type="text"
+                    name="description"
+                    {...formik.getFieldProps("description")}
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  />
+                  {formik.touched.description && formik.errors.description ? (
+                    <p className="text-red-400">{formik.errors.description}</p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+
                 {/* {formik.submitCount >= 2 && (<button>Click to Reset</button>)} */}
                 <input
                   type="submit"
