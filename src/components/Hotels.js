@@ -8,7 +8,8 @@ const Hotels = ({hotels , AllHotels}) => {
         AllHotels()
         console.log('in hotel1' , hotels)
         console.log('in hotel2' , hotels.hotels)
-    })
+        //eslint-disable-next-line
+    } , [])
 
     return (
         <div>

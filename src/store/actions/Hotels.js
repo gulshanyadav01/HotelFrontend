@@ -5,7 +5,9 @@ import {
   GET_HOTEL_BY_ID_FAIL,
   ALL_HOTELS,
   ALL_HOTELS_FAIL
-} from '../types'
+} from '../types';
+
+import Card from "../../components/Card"
 
 import axios from 'axios'
 
@@ -55,6 +57,8 @@ export const AllHotels = () => async dispatch => {
         const res = await axios.get('https://hotelbackendapp.herokuapp.com/admin/allHotels')
         
         console.log('action hotel', res);
+        const resHotel = await res.data.hotel;
+        console.log(resHotel);
         
 
         dispatch({
@@ -69,3 +73,5 @@ export const AllHotels = () => async dispatch => {
         })
     }
 }
+
+

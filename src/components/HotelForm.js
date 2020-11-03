@@ -7,14 +7,19 @@ import  {toast} from 'react-toastify'
 
 
 import {useHistory} from 'react-router-dom'
+import {AllHotels} from '../store/actions/Hotels'
 
-
-const Register = ({user , hotel}) => {
+const Register = ({user , hotels , AllHotels}) => {
     
     // let history = useHistory();
     
 
-    
+    useEffect(() => {
+        AllHotels()
+        console.log('in hotel1' , hotels)
+        console.log('in hotel2' , hotels.hotels)
+        //eslint-disable-next-line
+    }, [])
     
    
 
@@ -171,7 +176,7 @@ const mapStateToProps = state => ({
   hotels: state.hotels
 })
 
-export default connect(mapStateToProps , null)(Register);
+export default connect(mapStateToProps , {AllHotels})(Register);
 
 // npm install tailwindcss postcss-cli autoprefixer@9.8.6 -D
 
