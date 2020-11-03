@@ -3,32 +3,16 @@ import {useFormik} from 'formik'
 import * as Yup from 'yup';
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {registerUser} from '../store/actions/User'
 import  {toast} from 'react-toastify'
-// import {useHistory , Redirect} from 'react-router-dom'
-// import Login from './Login'
+
 
 import {useHistory} from 'react-router-dom'
 
-// const sendMessage = () => {
-//   toast.success('successFully registerd');
 
-// }
-
-const Register = ({user , registerUser}) => {
+const Register = ({user , hotel}) => {
     
     let history = useHistory();
     
-    useEffect(() => {
-       if(user.token) {
-         toast.success('SuccessFully Regsitered');
-         history.push('/login')
-       }
-       if(user.error) {
-         toast.error(user.error)
-       }
-       //eslint-disable-next-line
-    })
 
     
     
@@ -37,8 +21,7 @@ const Register = ({user , registerUser}) => {
     const formik = useFormik({
             initialValues: {
               email: "",
-              name: "", 
-              password: ""
+              
             },
         
             // validate,
@@ -51,15 +34,10 @@ const Register = ({user , registerUser}) => {
             }),
             onSubmit: (values) => {
               //console.log(JSON.stringify(values, null, 2));
-              registerUser(values)
             }
           });
         
-          // console.log(formik);
-
-          // if(user.token) {
-          //   history.push('/login')
-          // }
+         
         
           return (
             <div className="w-full shadow-lg max-w-xs mx-auto my-16" >
@@ -146,10 +124,11 @@ const Register = ({user , registerUser}) => {
 }
 
 const mapStateToProps = state => ({
-  user : state.user
+  user : state.user,
+  hotels: state.hotels
 })
 
-export default connect(mapStateToProps , {registerUser})(Register);
+export default connect(mapStateToProps , null)(Register);
 
 // npm install tailwindcss postcss-cli autoprefixer@9.8.6 -D
 
