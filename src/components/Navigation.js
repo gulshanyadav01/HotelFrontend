@@ -32,6 +32,7 @@ const Navigation = ({user}) => {
         </ul>) : (<ul className="flex mr-8 px-4 space-x-8">
                  <Link to="/login" className="hover:text-white">Login</Link>
                  <Link to="/register" className="hover:text-white">Register</Link>
+                 {/* <Link to= */}
         </ul>) }
      </div>
     )

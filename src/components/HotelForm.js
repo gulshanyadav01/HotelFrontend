@@ -17,8 +17,10 @@ const Register = ({user , hotels , AllHotels}) => {
     useEffect(() => {
         AllHotels()
         console.log('in hotel1' , hotels)
-        console.log('in hotel2' , hotels.hotels)
+        console.log('in hotel2' , hotels.hotels)//
         //eslint-disable-next-line
+
+
     }, [])
     
    

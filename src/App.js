@@ -17,6 +17,7 @@ import HotelForm from './components/HotelForm'
 import Hotels from './components/Hotels'
 
 import setAuthToken from './store/utils'
+import HomePage from './components/HomePage';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token)
@@ -30,6 +31,7 @@ function App() {
         <Navigation />
         {/* <StartPage /> */}
         <Switch>
+          <Route exact path = "/" component = {HomePage}/>
           <Route exact path="/login" component={Login}/>
           <Route  path= "/register" component = {Register} />
           <PrivateRoute  path= "/main" component = {Main} />

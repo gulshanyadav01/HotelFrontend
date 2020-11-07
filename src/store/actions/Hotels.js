@@ -7,7 +7,7 @@ import {
   ALL_HOTELS_FAIL
 } from '../types';
 
-import Card from "../../components/Card"
+import HotelCard from "../../components/HotelCard"
 
 import axios from 'axios'
 
@@ -52,19 +52,19 @@ export const getAllHotelById = (id) => async dispatch => {
 }
 
 export const AllHotels = () => async dispatch => {
+
     try {
 
         const res = await axios.get('https://hotelbackendapp.herokuapp.com/admin/allHotels')
         
-        console.log('action hotel', res);
-        const resHotel = await res.data.hotel;
-        console.log(resHotel);
-        
+        console.log('action hotel', res.data);
+        // console.log(resHotel);
 
         dispatch({
             type : ALL_HOTELS,
             payload : res.data
         })
+       
     } catch (err) {
         console.log('action hotel' , err.response)
         dispatch({
@@ -72,6 +72,7 @@ export const AllHotels = () => async dispatch => {
             payload: err.response.data.msg
         })
     }
+    
 }
 
 
