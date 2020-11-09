@@ -28,30 +28,39 @@
         
         .box3 {
             flex: 1;
-            background: yellow height: 150px;
+            background: yellow;
+            height: 150px;
             margin: 1px;
-            ;
         }
         
         .box4 {
-            flex: 1;
+            display: flex;
             background: pink;
             height: 150px;
             margin: 1px;
+            justify-content: center;
         }
         
-        .box5 {
-            flex: 1;
-            background: green;
-            height: 150px;
-            margin: 2px;
+        .box4 ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        .box6 {
-            flex: 1;
-            background: black;
-            height: 150px;
-            margin: 1px;
+        .box4 li a {
+            text-decoration: none;
+            padding: 8px 16px;
+            display: inline-block;
+            background: red;
+            border-radius: 40px;
+            box-shadow: 0 3px 2px #ccc;
+            color: white;
+            font-weight: 900;
+        }
+        
+        .box4 li a:hover {
+            background: crimson;
         }
     </style>
 </head>
@@ -61,9 +70,18 @@
         <div class="box1">hello</div>
         <div class="box2">world</div>
         <div class="box3">kese ho </div>
-        <div class="box4">kya hal </div>
-        <div class="box5">hai </div>
-        <div class="box6">aapke</div>
+        <div class="box4">
+            <ul>
+                <li>
+                    <a href="#">Home</a>
+                    <a href="#">About us </a>
+                    <a href="#">Contact</a>
+                    <a href="#">Services</a>
+                </li>
+            </ul>
+
+        </div>
+
     </div>
 
 </body>
